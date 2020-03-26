@@ -18,6 +18,8 @@ import {
 // sidebar nav config
 //import navigation from '../../_nav';
 // routes config
+import { connect } from "react-redux";
+import { addProfile } from "../../redux/Actions/profile";
 
 import routes from "../../routes";
 
@@ -49,8 +51,6 @@ class DefaultLayout extends Component {
     super();
     var profile = Auth.getProfile();
 
-
-  console.log(profile.role)
     API.getNavigationMenu(profile.role).then(res => {
       this.setState({ menu: res });
     });
@@ -114,4 +114,19 @@ class DefaultLayout extends Component {
   }
 }
 
-export default DefaultLayout;
+const mapStateToProps = state => {
+  return {
+    profile: state.profile.profile
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addProfile: name => {
+      dispatch(addProfile(name));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DefaultLayout);
+//export default DefaultLayout;
