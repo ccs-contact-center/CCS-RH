@@ -50,12 +50,14 @@ class DefaultLayout extends Component {
   constructor() {
     super();
     var profile = Auth.getProfile();
-
+    //var profile = [];
     API.getNavigationMenu(profile.role).then(res => {
       this.setState({ menu: res });
     });
   }
+
   render() {
+
     return (
       <div className="app">
         <AppHeader fixed>

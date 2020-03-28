@@ -4,13 +4,13 @@ import logo from "../assets/img/brand/logo.png";
 import withAuth from "../services/withAuth";
 
 class Inicio extends Component {
-  
-
   loading = () => (
     <div className="animated fadeIn pt-1 text-center">Cargando...</div>
   );
 
   render() {
+    console.log(this.props);
+
     return (
       <div className="animated fadeIn">
         <Row>
